@@ -1,0 +1,8 @@
+# Dependency directories
+node_modules/
+#ignore package-lock.json
+package-lock.json
+# dotenv environment variables file
+.env
+# Optional npm cache directory
+.npm
