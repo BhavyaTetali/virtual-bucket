@@ -1,0 +1,15 @@
+.center{
+    margin-left:auto;
+    margin-right:auto;
+}
+.custom-bg{
+    background-color:#72a3ec;
+}
+.custom-padding{
+    padding: 20px;
+}
+th, td { 
+    text-align:center; 
+    padding:5px;
+  
+} 

@@ -5,19 +5,37 @@ var cookieParser = require("cookie-parser");
 
 var welcomeHandler = require("./lib/welcome");
 var signupHandler = require("./lib/signup");
+var signinHandler = require("./lib/signin");
+var signoutHandler = require("./lib/signout");
+var uploadHandler = require("./lib/upload");
 var deleteUserHandler = require("./lib/deleteuser");
+var downloadHandler = require("./lib/download");
+var deleteHandler = require("./lib/delete");
+var dashboardHandler = require("./lib/dashboard");
 
 var app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "views")));
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, 'views/index.html'))
+});
 
 /* main APIs */
 app.use("/welcome", welcomeHandler);
 app.use("/signup", signupHandler);
+app.use("/signin", signinHandler);
+app.use("/signout", signoutHandler);
 app.use("/deleteuser", deleteUserHandler);
+app.use("/upload", uploadHandler);
+app.use("/download", downloadHandler);
+app.use("/delete", deleteHandler);
+app.use("/dashboard", dashboardHandler);
+
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -30,8 +48,9 @@ app.use(function (req, res, next) {
 
 // error handler
 app.use(function (err, req, res, next) {
-  res.status(err.status).json({
-    message: err.message,
+  console.log(err);
+  res.status(err.status || 500).json({
+    message: err.message || "Unknown error",
   });
   next()
 });
