@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login Form</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+</head>
+
+<body class="custom-body-style">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <!-- End of bootstrap JS-->
+    <script src="/javascripts/index.js"></script>
+
+    <br><br><br><br>
+    <div class="d-flex justify-content-center">
+        <div class="border rounded-lg bg-white custom-padding" id="signInUserDiv">
+            <form id="signInUser" name="formSignInUser" method="post" action="/signin/">
+                <table>
+                    <tr>
+                        <td> <input class="form-control" type="text" name="email" id="signupemail" placeholder="Email">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" type="Password" name="password" id="signuppswd" placeholder="Password">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><button type="submit" class="btn btn-primary btn-block" name="login" id="login"> Log In
+                            </button> </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <hr>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><button type="button" class="btn btn-outline-success" name="showSignUp"
+                                id="showSignUp">Create New
+                                Account</button></td>
+                    </tr>
+
+
+                </table>
+
+            </form>
+
+        </div>
+
+        <div class="border rounded-lg bg-white custom-padding" id="signUpUserDiv" style="display: none;">
+            <form id="signUpUser" name="formSignUpUser" method="post" action="/signup/">
+                <table>
+                    <tr>
+                        <td> <input class="form-control" type="text" name="email" id="signupemail"
+                                placeholder="Email">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" type="Password" name="password" id="signuppswd"
+                                placeholder="Password">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" type="Password" name="confirmpswd" id="confirmpswd"
+                                placeholder="Confirm Password">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><button type="submit" class="btn btn-primary btn-block" name="newaccount" id="newaccount">
+                                Create New
+                                Account
+                            </button> </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <hr>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><button type="button" class="btn btn-outline-success" name="showLogIn" id="showLogIn"> Log
+                                In </button></td>
+                    </tr>
+
+                </table>
+            </form>
+
+        </div>
+    </div>
+    <div id="msgBlock">
+        <br>
+        <div id="signUpMsg" class="font-italic text-white"> <%= typeof signUpMsg!='undefined' ? signUpMsg : '' %> </div>
+        <div id="signUpErrMsg" class="font-italic text-danger"> <%= typeof signUpErrMsg!='undefined' ? signUpErrMsg : '' %> </div>
+        <div id="signInErrMsg" class="font-italic text-danger"> <%= typeof signInErrMsg!='undefined' ? signInErrMsg : '' %> </div>
+    </div>
+
+</body>
+
+</html>

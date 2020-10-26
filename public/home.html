@@ -3,14 +3,14 @@
 
 <head>
     <title>Login Form</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
 </head>
 
-<body class="custom-bg">
+<body class="custom-body-style">
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -23,7 +23,7 @@
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
     <!-- End of bootstrap JS-->
-    <script src="index.js"></script>
+    <script src="javascripts/index.js"></script>
 
     <br><br><br><br>
     <div class="d-flex justify-content-center">
@@ -31,15 +31,15 @@
             <form id="signInUser" name="formSignInUser" method="post" action="/signin/">
                 <table>
                     <tr>
-                        <td> <input class="form-control" type="text" name="Uname" id="Uname" placeholder="Username">
+                        <td> <input class="form-control" type="text" name="email" id="signinemail" placeholder="Username">
                         </td>
                     </tr>
                     <tr>
-                        <td><input class="form-control" type="Password" name="Pass" id="Pass" placeholder="Password">
+                        <td><input class="form-control" type="Password" name="password" id="signinpswd" placeholder="Password">
                         </td>
                     </tr>
                     <tr>
-                        <td><button type="button" class="btn btn-primary btn-block" name="login" id="login"> Log In
+                        <td><button type="submit" class="btn btn-primary btn-block" name="login" id="login"> Log In
                             </button> </td>
                     </tr>
                     <tr>
@@ -60,18 +60,18 @@
         </div>
 
         <div class="border rounded-lg bg-white custom-padding" id="signUpUserDiv" style="display: none;">
-            <form id="signUpUser" name="formSignUpUser" method="post" action="/signin/">
+            <form id="signUpUser" name="formSignUpUser" method="post" action="/signup/">
                 <table>
                     <tr>
-                        <td> <input class="form-control" type="text" name="signupemail" id="signupemail" placeholder="Username">
+                        <td> <input class="form-control" type="text" name="email" id="signupemail" placeholder="Username">
                         </td>
                     </tr>
                     <tr>
-                        <td><input class="form-control" type="Password" name="signuppass" id="signuppass" placeholder="Password">
+                        <td><input class="form-control" type="Password" name="password" id="signuppswd" placeholder="Password">
                         </td>
                     </tr>
                     <tr>
-                        <td><input class="form-control" type="Password" name="confirmpass" id="confirmpass" placeholder="Confirm Password">
+                        <td><input class="form-control" type="Password" name="confirmpswd" id="confirmpswd" placeholder="Confirm Password">
                         </td>
                     </tr>
                     <tr>
@@ -88,9 +88,7 @@
                         <td><button type="button" class="btn btn-outline-success" name="showLogIn" id="showLogIn"> Log In </button></td>
                     </tr>
 
-
                 </table>
-                
             </form>
             
         </div>
