@@ -24,52 +24,52 @@
 
     <script src="/javascripts/dashboard.js"></script>
     <input type="hidden" id="email" value="<%= email %>">
-
     <br>
     <h1 class="display-4 text-white font-weight-bold"> VIRTUAL BUCKET </h1>
-    <button type="button" class="btn btn-primary" onclick="signOut()" style="position: absolute; right:30px; top: 40px;">Sign Out</button>
+    <button type="button" class="btn btn-primary" onclick="signOut()"
+        style="position: absolute; right:30px; top: 40px;">Sign Out</button>
 
-<div class="justify-content-center">
-    <br>
-    <br>
-    <div class="rounded-lg bg-white custom-padding" id="fileUploadDiv" style="
+    <div class="justify-content-center">
+        <br>
+        <br>
+        <div class="rounded-lg bg-white custom-padding" id="fileUploadDiv"
+            style="text-align: center; margin: auto; width: fit-content;">
+            <form id="fileUploadForm" name="uploadForm" method="POST" enctype="multipart/form-data">
+                <table id="fileUpload">
+                    <tbody>
+                        <tr>
+                            <td><input type="file" id="fileInfo" name="fileInfo" /></td>
+                            <td><button type="button" class="btn btn-primary" onclick="uploadFile()">Upload</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+        </div>
+        </form>
+        <br>
+        <br>
+        <hr>
+        <br>
+        <br>
+        <div class=" rounded-lg bg-white custom-padding" id="dashboardDiv" style="
     text-align: center;
     margin: auto;
     width: fit-content;">
-        <table id="fileUpload">
-            <tbody>
-                <tr>
-                    <td><input type="file" id="#fileInput"></td>
-                    <td><button type="button" class="btn btn-primary" onclick="uploadFile()">Upload</button></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <br>
-    <br>
-    <hr>
-    <br>
-    <br>
-    <div class=" rounded-lg bg-white custom-padding" id="dashboardDiv" style="
-    text-align: center;
-    margin: auto;
-    width: fit-content;">
-        <table class="table table-hover" id="fileList">
-            <thead>
-                <tr>
-                    <th><span>File Name</span></th>
-                    <th><span>Type</span></th>
-                    <th><span>Creation Time</span></th>
-                    <th><span>Updation Time</span></th>
-                    <th><span></span></th>
-                    <th><span></span></th>
-                </tr>
+            <table class="table table-hover" id="fileList">
+                <thead>
+                    <tr>
+                        <th><span>File Name</span></th>
+                        <th><span>Type</span></th>
+                        <th><span>Creation Time</span></th>
+                        <th><span>Updation Time</span></th>
+                        <th><span></span></th>
+                        <th><span></span></th>
+                    </tr>
                 </thead>
-            <tbody></tbody>
-        </table>
+                <tbody></tbody>
+            </table>
+        </div>
     </div>
-</div>
 </body>
 
 </html>

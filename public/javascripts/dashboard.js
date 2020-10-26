@@ -80,14 +80,43 @@ function deleteFun(fileName) {
   }
   var email = $("#email").val();
   console.log("Sending delete request for " + fileName);
-  
-  $.post( "/delete/", { username: email, filename: fileName})
-  .done(function(data){
-    populateTable(email);
-    alert('Deleted file successfully!');
-  })
-  .fail(function(data) {
-    alert(data.message);
-  });
 
+  $.post("/delete/", { username: email, filename: fileName })
+    .done(function (data) {
+      populateTable(email);
+      alert("Deleted file successfully!");
+    })
+    .fail(function (data) {
+      alert(data.message);
+    });
+}
+
+function uploadFile() {
+  console.log("Sending upload file request!");
+  var email = $("#email").val();
+  var form = $("#fileUploadForm")[0];
+  var fd = new FormData(form);
+  fd.append("username", email);
+
+  $.ajax({
+    url: "/upload/",
+    type: "POST",
+    enctype: "multipart/form-data",
+    data: fd,
+    processData: false,
+    contentType: false,
+    cache: false,
+    success: function (data) {
+      populateTable(email);
+      alert("Uploaded file successfully!");
+    },
+    error: function (response, msg, error) {
+      console.log(error);
+      alert(response.responseJSON.err);
+    },
+  });
+}
+
+function signOut() {
+  
 }
