@@ -65,7 +65,7 @@ function downloadFun(fileName) {
 }
 
 function deleteFun(fileName) {
-  if (!confirm("Are you sure?")) {
+  if (!confirm("Are you sure you want to delete "+fileName+"?")) {
     return;
   }
   var email = $("#email").val();
