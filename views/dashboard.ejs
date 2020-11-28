@@ -24,8 +24,10 @@
 
     <script src="/javascripts/dashboard.js"></script>
     <input type="hidden" id="email" value="<%= email %>">
+    <input type="hidden" id="accountType" value="<%= accountType %>">
     <br>
     <h1 class="display-4 text-white font-weight-bold"> VIRTUAL BUCKET </h1>
+    <p style="position: absolute; right:30px; top: 100px;"> <%= email %>(<%= accountType %>) </p>
     <button type="button" class="btn btn-primary" onclick="signOut()"
         style="position: absolute; right:30px; top: 40px;">Sign Out</button>
 
@@ -58,6 +60,7 @@
             <table class="table table-hover" id="fileList">
                 <thead>
                     <tr>
+                        <th id="userNameColumn"><span>User Name</span></th>
                         <th><span>File Name</span></th>
                         <th><span>Type</span></th>
                         <th><span>Creation Time</span></th>

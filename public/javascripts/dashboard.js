@@ -14,10 +14,19 @@ function populateTable(email) {
   // Empty content string
   var tableContent = "";
 
+  if ($("#accountType").val() == "ADMIN") {
+    $("#userNameColumn").show();
+  } else{
+    $("#userNameColumn").hide();
+  }
+
   $.post("/dashboard/", { username: email }).done(function (data) {
     // For each item in our JSON, add a table row and cells to the content string
     $.each(data.message, function () {
       tableContent += "<tr>";
+      if ($("#accountType").val() == "ADMIN") {
+        tableContent += "<td>" + this.userName.S + "</td>";
+      }
       tableContent += "<td>" + this.fileName.S + "</td>";
       tableContent += "<td>" + this.fileType.S + "</td>";
       tableContent +=
@@ -25,13 +34,13 @@ function populateTable(email) {
       tableContent +=
         "<td>" + new Date(this.updatedTime.S).toLocaleString() + "</td>";
       tableContent +=
-        '<td><button type="button" class="btn btn-primary" value="' +
+        '<td><button type="button" class="btn btn-primary" user-name="' + this.userName.S +  '" value="' +
         this.fileName.S +
-        '" onclick="downloadFun(this.value)">Download</button></td>';
+        '" onclick="downloadFun(this.value, this.getAttribute(\'user-name\'))">Download</button></td>';
       tableContent +=
-        '<td><button type="button" class="btn btn-danger" value="' +
+        '<td><button type="button" class="btn btn-danger" user-name="' + this.userName.S +  '" value="' +
         this.fileName.S +
-        '" onclick="deleteFun(this.value)">Delete</button></td>';
+        '" onclick="deleteFun(this.value, this.getAttribute(\'user-name\'))">Delete</button></td>';
       tableContent += "</tr>";
     });
 
@@ -43,10 +52,11 @@ function populateTable(email) {
   });
 }
 
-function downloadFun(fileName) {
+function downloadFun(fileName, email) {
   console.log("Sending download request for " + fileName);
+  //var email = $("#email").val();
   const url =
-    "/download/?userName=" + $("#email").val() + "&fileName=" + fileName;
+    "/download/?userName=" + email + "&fileName=" + fileName;
 
   fetch(url)
     .then((resp) => resp.blob())
@@ -64,16 +74,17 @@ function downloadFun(fileName) {
     .catch(() => alert("Unable to download! Please try again!"));
 }
 
-function deleteFun(fileName) {
+function deleteFun(fileName, email) {
   if (!confirm("Are you sure you want to delete "+fileName+"?")) {
     return;
   }
-  var email = $("#email").val();
+  //var email = $("#email").val();
+  var loggedUser = $("#email").val();
   console.log("Sending delete request for " + fileName);
 
   $.post("/delete/", { username: email, filename: fileName })
     .done(function (data) {
-      populateTable(email);
+      populateTable(loggedUser);
       alert("Deleted file successfully!");
     })
     .fail(function (data) {
@@ -103,6 +114,9 @@ function uploadFile() {
     error: function (response, msg, error) {
       console.log(error);
       alert(response.responseJSON.err);
+    },
+    complete: function (data) {
+      $('#fileUploadForm')[0].reset(); // this will reset the form fields
     },
   });
 }
